@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  {% include 'head.html' %}
+  <body>
+    <main>
+      <section id="title-section">
+        <nav>
+          <div class="title"> <a href="/"> WordExplorer </a> </div>
+        </nav>
+      </section>
+      {% include 'form.html' %}
+      <section id="definitions-section">
+        <h2 class="word">{{ word }}</h2>
+	<div class="info-buts">
+  	  <button class="definition-but smaller-a"> Definitions </button>
+  	  <button class="synonym-but smaller-a inactive"> Synonyms </button>
+  	  <button class="antonym-but smaller-a inactive"> Antonyms </button>
+	</div>
+        <div class="all-info definitions flex">
+          {% for key, value in def_data.items(): %}
+            {% if value != []: %}
+              <div class="info">
+                <h4>{{ key.title() }}</h4>
+                <ol>
+                  {% for word_data in value: %}
+                    <li>
+                      <p class="definition"> {{ word_data["definition"] }} </p>
+                      {% if "example" in word_data: %}
+                        <p class="example"><span>-</span> {{ word_data["example"] }}</p>
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ol>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+	
+	{% for num in range(2): %}
+	  <div class="all-info {{ ['synonyms', 'antonyms'][num] }}">
+  	    {% if sym_ant_data[num] != []: %}
+    	      {% for sub_string in sym_ant_data[num]: %}
+      	        <a class="{{ ['synonym', 'antonym'][num] }} smaller-a" href="{{ url_for('display', word=sub_string) }}">{{ sub_string }}</a>
+    	      {% endfor %}
+  	    {% else: %}
+    	      <p>Sorry: no {{ ['synonyms', 'antonyms'][num] }} found in thesaurus.</p>
+  	    {% endif %}
+	  </div>
+	{% endfor %}
+      </section>
+    </main>
+    <script src="../static/display-script.js"></script>
+  </body>
+</html>

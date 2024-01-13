@@ -1,0 +1,111 @@
+:root {
+  --color1: #45474B;
+}
+
+body {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Multi Selector Rules */
+#title-section, .word-link:hover, .word-link:active {
+  background-color: var(--color1);
+}
+
+a, #title-section, #search-button, .word-link:hover, .word-link:active {
+  color: white;
+}
+
+input, button {
+  border-radius: 5px;
+}
+
+/* Title Section */
+#title-section {
+  height: 250px;
+}
+
+.title-block {
+  padding-top: 45px;
+}
+
+.title {
+  font-size: 50px;
+  margin-bottom: 5px;
+}
+
+/* Form Section */
+#form-section {
+  margin: 3% auto;
+}
+
+form {
+  display: inline-block;
+}
+
+#search-bar {
+  width: 200px;
+  height: 22px;
+  border-width: 1px;
+  padding-left: 7px;
+}
+
+#search-button {
+  height: 26.8px;
+  border: none;
+  background-color: black;
+  cursor: pointer;
+}
+
+/* Random Words Section */
+
+.all-words {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.word {
+  overflow: hidden;
+}
+
+.word-link {
+  font-size: 20px;
+  width: 25%;
+  border: 3px solid gray;
+  color: var(--color1);
+}
+
+.word-link:hover {
+  border-color: var(--color1);
+}
+
+@media only screen and (max-width: 720px) {
+  /* Title Section */
+  .title {
+    font-size: 170%;
+  }
+
+  /* Random Words Section */
+  .word-link {
+    width: 80%;
+  }
+
+  /* Form Section */
+  #search-section {
+    margin: 5% auto;
+  }
+
+  #search-bar {
+    width: 66%;
+  }
+}
